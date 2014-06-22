@@ -30,6 +30,10 @@ module Blogit
 
     has_many :comments, :class_name => "Blogit::Comment"
 
+
+    # added by shibiuya
+    belongs_to :project
+
     # ==========
     # = Scopes =
     # ==========

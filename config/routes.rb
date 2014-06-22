@@ -4,6 +4,7 @@ Blogit::Engine.routes.draw do
   get "posts/page/:page" => "posts#index"
   get "posts/tagged/:tag" => 'posts#tagged', as: :tagged_blog_posts
 
+
   resources :posts do
     resources :comments, only: [:create, :destroy]
   end

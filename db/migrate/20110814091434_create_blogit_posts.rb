@@ -6,10 +6,11 @@ class CreateBlogitPosts < ActiveRecord::Migration
         r.text :body
         r.string :state, default: Blogit::configuration.hidden_states.first.to_s
         r.integer :comments_count, default: 0
+        r.integer :project_id
       end
       t.references :blogger, polymorphic: true
       t.timestamps
     end
-    add_index :blogit_posts, [:blogger_type, :blogger_id]
+    add_index :blogit_posts, [:blogger_type, :blogger_id, :project_id]
   end
 end
