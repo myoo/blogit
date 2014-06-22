@@ -3,8 +3,10 @@ module Blogit
 
     require 'acts-as-taggable-on'
     require "kaminari"
+    require 'bootsy'
 
     include ::ActionView::Helpers::TextHelper
+    include Bootsy::Container
 
     acts_as_taggable
 
@@ -21,6 +23,7 @@ module Blogit
     validates :body,  presence: true, length: { minimum: 10 }
     validates :blogger_id, presence: true
     validates :state, presence: true
+    validate :only_owner, on: :create
 
     # ================
     # = Associations =
@@ -84,6 +87,11 @@ module Blogit
     def check_comments_config
       raise RuntimeError.new("Posts only allow active record comments (check blogit configuration)") unless Blogit.configuration.include_comments == :active_record
     end
-    
+
+    def only_owner
+      if blogger.owned_projects.nil? || blogger.owned_projects.count == 0
+        errors.add :base, "You are not Project Owner"
+      end
+    end
   end
 end

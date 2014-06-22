@@ -28,3 +28,8 @@ end
 # The rake task "app:acts_as_taggable_on_engine:install:migrations" doesn't work
 # without it here
 gem 'acts-as-taggable-on'
+
+gem 'bootsy'
+gem 'carrierwave', "~> 0.10.0"
+gem "fog"
+gem "mini_magick"
