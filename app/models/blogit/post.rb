@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 module Blogit
   class Post < ActiveRecord::Base
 
@@ -44,8 +45,8 @@ module Blogit
     # Returns the blog posts paginated for the index page
     # @scope class
     scope :for_index, lambda { |page_no = 1| order("created_at DESC").page(page_no) }
-    scope :active, lambda { where(state:  Blogit.configuration.active_states ) }
-
+#    scope :active, lambda { where(state:  Blogit.configuration.active_states ) }
+    scope :active, lambda { where(state:  "公開" ) }
     # ====================
     # = Instance Methods =
     # ====================
