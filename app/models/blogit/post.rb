@@ -5,9 +5,12 @@ module Blogit
     require 'acts-as-taggable-on'
     require "kaminari"
     require 'bootsy'
+    require 'carrierwave'
 
     include ::ActionView::Helpers::TextHelper
     include Bootsy::Container
+
+    mount_uploader :blog_image, BlogImageUploader
 
     acts_as_taggable
 

@@ -2,6 +2,7 @@
 require "kaminari"
 require "redcarpet"
 require "pingr"
+require 'carrierwave'
 
 require "blogit/configuration"
 require "blogit/blogs"
