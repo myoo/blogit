@@ -39,7 +39,7 @@ module Blogit
 
 
     # added by shibiuya
-    belongs_to :project
+    belongs_to :project, -> { with_deleted }
 
     # ==========
     # = Scopes =
